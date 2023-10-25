@@ -109,7 +109,7 @@ $U = \{f\in V : f(0) = 0\}$，求补空间？
 
 ## 第2节 线性变换（线性映射）
 
-### 定义
+### 定义：线性变换（线性映射）
 
 设 $U, V$ 是线性空间，映射 $\sigma: U\to V$，如果 $\sigma$ 保持线性结构，即
 
@@ -144,7 +144,7 @@ $End(U) = Hom(U, U)$
 
 $U^{*} = Hom(U, \mathbb{F})$
 
-### 定义
+### 定义：单、满、同构
 
 设 $\sigma\in Hom (U, V)$，单射称为**单变换**，满射称为**满变换**；
 
@@ -366,12 +366,192 @@ $$
 
 ## 第4节 内积空间中的线性变换
 
-定义：**保距变换**
+### 定义：保距变换
 
 $V$ 是有限维内积空间，$\sigma\in End(V)$ 保持距离，即 $\forall \alpha, \beta \in V, d(\sigma(\alpha), \sigma(\beta)) = d(\alpha, \beta)$，其中距离定义 $d(\alpha, \beta) = \|\alpha - \beta\|$，称 $\sigma$ 是**保距映射**
 
-定理：设 $V$ 是有限维内积空间，$\sigma\in End(V)$，那么以下条件等价：
+### 保距变换的各种等价刻画
+
+**定理** 设 $V$ 是有限维内积空间，$\sigma\in End(V)$，那么以下条件等价：
 
 * $\sigma$ 是保距映射
 * $\sigma$ 保持向量长度 $\forall \alpha\in V, \|\sigma(\alpha)\| = \|\alpha\|$
 * $\sigma$ 保持内积 $\forall \alpha, \beta\in V, (\sigma(\alpha), \sigma(\beta)) = (\alpha, \beta)$
+
+计算内积的**公式**
+
+设 $V$ 是一个有限维内积空间，$\{\alpha_1, \cdots, \alpha_n\}$ 是 $V$ 的一组标准正交基，
+$$
+\alpha = \sum x_k\alpha_k, \\
+\beta = \sum y_k\alpha_k, \\
+$$
+则
+$$
+\begin{aligned}
+(\alpha, \beta)
+&= \sum_i \sum_j (x_i\alpha_i, y_j\alpha_j) \\
+&= \sum_i \sum_j x_i \overline{y_j} (\alpha_i, \alpha_j) \\
+&= \sum_i x_i \overline{y_i}.
+\end{aligned}
+$$
+
+**定理** 设 $V$ 是一个有限维内积空间，$\{\alpha_1, \cdots, \alpha_n\}$ 是 $V$ 的一组标准正交基，$\sigma\in End(V)$，那么 $\sigma$ 是保距变换 $\iff \sigma$ 在 $\{\alpha_1, \cdots, \alpha_n\}$ 基下的矩阵是酉矩阵.
+
+**定理** 设 $V$ 是一个有限维内积空间，$\sigma\in End(V)$，那么 $\sigma$ 是保距变换 $\iff \sigma$ 把一组标准正交基映射到一组标准正交基.
+
+### 例子：二维保距变换
+
+例：$V=\mathbb{R}^2, \sigma: \mathbb{R}^2 \to \mathbb{R}^2, x\mapsto \left(\begin{array}{cc}\cos\theta & -\sin\theta\\ \sin\theta & \cos\theta\end{array}\right) x$，
+
+旋转是保距变换.
+
+例：$\tau: \mathbb{R}^2 \to \mathbb{R}^2, (x, y)\mapsto (x, y) \left(\begin{array}{cc}0 & 1\\ -1 & 0\end{array} \right) = (-y, x)$.
+基 $e_1 = (1, 0), e_2 = (0, 1)$，$(\tau(e_1), \tau(e_2)) = ((0, 1), (-1, 0)) = (e_1, e_2) \left(\begin{array}{cc}0 & -1\\ 1 & 0\end{array} \right)$
+的矩阵是 $\left(\begin{array}{cc}0 & -1\\ 1 & 0\end{array} \right)$ 而不是 $\left(\begin{array}{cc}0 & 1\\ -1 & 0\end{array} \right)$.
+
+严格写出定义式，把基写出来；不看向量，看抽象的元素.
+
+例：二维空间任何一个保距变换是什么样的？
+$V=\mathbb{R}^2, \sigma:\mathbb{R}^2 \to \mathbb{R}^2$ 是保距变换.
+
+$\mathbb{R}^2$ 标准正交基 $e_1 = \left(\begin{array}{c}1\\0\end{array}\right), e_2 = \left(\begin{array}{c}0\\1\end{array}\right)$，则 $(\sigma(e_1), \sigma(e_2)) = (e_1, e_2) A.$
+
+$\sigma$ 保距变换 $\iff A$ 酉矩阵 $\iff A^\top A = I_2,$
+
+令 $A = \left(\begin{array}{cc}a & b\\ c & d\end{array} \right)$，则
+$$
+\begin{cases}
+a^2 + c^2 = 1, \\
+ab + cd = 0, \\
+b^2 + d^2 = 1,
+\end{cases}
+$$
+
+可见向量 $(a, c)$ 和向量 $(b, d)$ 都是单位向量且相互垂直.
+
+如 $(a, c) = (\cos\theta, \sin\theta)$，则 $(b, d) = (-\sin\theta, \cos\theta)$ 或 $(b, d) = (\sin\theta, -\cos\theta)$，
+$A = \left(\begin{array}{cc}\cos\theta & -\sin\theta\\ \sin\theta & \cos\theta\end{array}\right)$ 旋转，或
+$A = \left(\begin{array}{cc}\cos\theta & \sin\theta\\ \sin\theta & -\cos\theta\end{array}\right)$ 反射（对称）
+
+$V = \mathbb{R}^2$，基 $e_1, e_2$, $\forall x\in V, x = x_1e_1 + x_2e_2$
+$$
+(\sigma(e_1), \sigma(e_2)) = (e_1, e_2) A
+$$
+
+$x$ 坐标 $(x_1, x_2)$；
+$\sigma(x)$ 坐标 $A \left(\begin{array}{c}x_1\\ x_2\end{array}\right)$
+
+设 $A = \left(\begin{array}{cc}\cos\theta & \sin\theta\\ \sin\theta & -\cos\theta\end{array}\right)$，特征方程 $\lambda^2 - 1 = 0$，解得 $\lambda = \pm 1$
+
+设 $\lambda_1 = 1$ 对应特征向量 $v_1$，$\lambda_2 = -1$ 对应特征向量 $v_2$，设 $\|v_1\| = \|v_2\| = 1$
+
+$Av_1 = v_1, Av_2 = -v_2$
+
+赫米特矩阵 $A^* = A$ 因此 $v_1\perp v_2$
+
+对称轴 $x_1=x_2$
+
+$l_1 = Span(v_1)$，$A$ 是关于直线 $l_1$ 的反射，$l_1$ 是 $A$ 的对称轴.
+
+一般情况：$V$ 任意二维内积空间，$\sigma: V\to V$ 保距变换，$\{e_1, e_2\}$ 标准正交基
+$$
+(\sigma(e_1), \sigma(e_2)) = (e_1, e_2) A
+$$
+
+称为旋转或反射.
+
+例：$\sigma: \mathbb{R}^2 \to \mathbb{R}^2, x\mapsto Ax$ 保距变换，取 $e_1 = \left(\begin{array}{c}1\\0\end{array}\right), e_2 = \left(\begin{array}{c}0\\1\end{array}\right)$，则
+$$
+(\sigma(e_1), \sigma(e_2)) = (e_1, e_2) A,
+$$
+此 $A$ 正是彼 $A$.
+
+### 例子：三维保距变换
+
+例：$V$ 三维内积空间，$\{e_1, e_2, e_3\}$ 标准正交基，$\sigma: V\to V$ 保距变换是什么样的？
+$$
+(\sigma(e_1), \sigma(e_2), \sigma(e_2)) = (e_1, e_2, e_3) A,
+$$
+$\sigma$ 保距变换 $\iff A$ 酉矩阵 $\iff A^\top A = I_3 \cdots$
+
+过程复杂，结论如下：
+
+如果 $A^\top A = I_3$，那么 $A$ 只能正交相似于以下6个矩阵：
+$$
+diag(1, 1, 1), \\
+diag(1, 1, -1), \\
+diag(1, -1, -1), \\
+diag(-1, -1, -1), \\
+\left(\begin{array}{ccc}1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta\end{array}\right), \\
+\left(\begin{array}{ccc}-1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta\end{array}\right).
+$$
+
+其中第5种是绕一个轴的旋转：
+如果 $A\sim \left(\begin{array}{ccc}1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta\end{array}\right)$，那么存在 $Q = (\alpha_1, \alpha_2, \alpha_3), Q^\top Q = I_3$，使得
+$$
+Q^{-1} A Q = \left(\begin{array}{ccc}1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta\end{array}\right)
+$$
+$A\alpha_1 = \alpha_1, A(\alpha_2, \alpha_3) = (\alpha_2, \alpha_3) \left(\begin{array}{cc}\cos\theta & \sin\theta\\ \sin\theta & -\cos\theta\end{array}\right)$
+
+轴是 $Span(\alpha_1)$，在平面 $Span(\alpha_2, \alpha_3)$ 内旋转.
+
+其中第6种是绕轴 $Span(\alpha_1)$ 的旋转且关于平面 $Span(\alpha_2, \alpha_3)$ 反射.
+
+$\sigma: \mathbb{R}^3 \to \mathbb{R}^3, x\mapsto Ax$ 保距变换，取 $e_1 = \left(\begin{array}{c}1\\0\\0\end{array}\right), e_2 = \left(\begin{array}{c}0\\1\\0\end{array}\right), e_3 = \left(\begin{array}{c}0\\0\\1\end{array}\right)$，则
+$$
+(\sigma(e_1), \sigma(e_2), \sigma(e_3)) = (e_1, e_2, e_3) A,
+$$
+此 $A$ 正是彼 $A$.
+
+例：$A = \left(\begin{array}{ccc}\cfrac14 & \cfrac{\sqrt 3}{4} & \cfrac{\sqrt 3}{2} \\ \cfrac{\sqrt 3}{2} & -\cfrac12 & 0 \\ \cfrac{\sqrt 3}{4} & \cfrac34 & -\cfrac12\end{array}\right)$
+
+解：看迹，正交相似不改变迹，不可能是前4种.
+第5种有特征值 $1$，第6种有特征值 $-1$.
+计算得 $|I-A| = 0,$
+$tr(A) = -\cfrac34 = 1 + 2\cos\theta, \cos\theta = -\cfrac78$.
+
+例：设 $v\in \mathbb{C}^n, v\neq 0, H = I_n - 2\cfrac{vv^*}{v^* v}, x\mapsto Hx (x\in\mathbb{C}^n)$，称为 Householder 变换，是保距变换.
+
+$$
+Hv = v - 2\cfrac{vv^*v}{v^* v} = v-2v = -v
+$$
+
+$U = Span(v)^\perp, x\in U$，那么
+$$
+Hx = x - 2\cfrac{vv^*x}{v^* v}, \\
+v^* x = \sum_k \overline{v_k} x_k = 0, \\
+Hx = x
+$$
+
+是关于 $U$ 的反射，是保距变换.
+
+例：Jacobi旋转（Givens旋转）……自己看书
+
+### 对称变换
+
+定义：设 $V$ 是一个欧氏空间，即 $\mathbb{F} = \mathbb{R}$ 的内积空间；设 $\sigma\in End(V)$，如果 $\forall \alpha, \beta\in V, (\sigma(\alpha), \beta) = (\alpha, \sigma(\beta))$，那么称 $\sigma$ 是**对称变换**.
+
+定理：设 $V$ 是一个有限维欧氏空间，$\sigma\in End(V)$，那么 $\sigma$ 是对称变换 $\iff \sigma$ 在任意一组标准正交基下的矩阵是对称矩阵.
+
+### 伴随变换
+
+定义：设 $V$ 是一个内积空间，$\mathbb{F} = \mathbb{R}$ 或 $\mathbb{F} = \mathbb{C}$，$\sigma\in End(V)$，如果存在 $\tau\in End(V)$ 使得 $\forall \alpha, \beta\in V, (\sigma(\alpha), \beta) = (\alpha, \tau(\beta))$，那么称 $\tau$ 是 $\sigma$ 的**伴随变换**，记为 $\tau = \sigma^*$.
+
+如果 $\sigma^* = \sigma$，称 $\sigma$ 是**自伴变换**.
+
+定理：设 $V$ 是一个有限维内积空间，$\sigma, \tau \in End(V)$，在某组标准正交基下，其矩阵分别为 $A, B$.
+那么：
+
+（1）$(\sigma^*)^* = \sigma, (\sigma+\tau)^* = \sigma^*+\tau^*, (\lambda\sigma)^* = \overline{\lambda}\sigma^*;$
+
+（2）如果 $\tau=\sigma^*$ 那么 $B=A^*$.
+
+定理
+
+$V = U\oplus U^\perp, \forall x\in V$，$x$ 可以分解到 $U$ 和 $U^\perp$ 上.
+设 $x$ 在 $U$ 的投影为 $y$，在 $U^\perp$ 的投影为 $z$，$x = y+z$.
+
+定义 $P_U: V\to U\subseteq V, x\mapsto y$，则 $P_U \in End(V)$，称为 $V$ 向子空间 $U$ 作垂直投影的**正交投影变换**；
+类似地，$P_{U^\perp}: V\to U^\perp, x\mapsto z$ 为 $V$ 向子空间 $U^\perp$ 作垂直投影的**正交投影变换**.
+
+定理：设 $V$ 内积空间，$\sigma \in End(V)$，那么 $\sigma$ 是 $V$ 向某个子空间的正交投影变换 $\iff \sigma$ 是自伴的幂等变换.
